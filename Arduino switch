@@ -1,0 +1,20 @@
+int switchPin = 7;
+int LEDPin = 13;
+
+void setup() {
+ pinMode (switchPin, INPUT);
+ pinMode (switchPin1, INPUT);
+ pinMode (LEDPin, OUTPUT);
+ Serial.begin(9600);
+}
+void loop() {
+
+if (digitalRead(switchPin) == HIGH ) {
+Serial.write(2);
+ digitalWrite(LEDPin, HIGH);
+} else {
+Serial.write(1);
+digitalWrite(LEDPin, LOW);
+}
+delay(100)
+}
