@@ -1,0 +1,55 @@
+mport processing.serial.*;
+
+Serial port; 
+String serial;
+int val; // This the code to connect the Arduino to processing
+
+int numFrames =  // The number of frames in the animation
+int frame = 0;
+PImage[] Handshake = new PImage[numFrames];
+
+void setup()
+{
+size(400,400);
+
+
+Handshake[0] = loadImage("JPEG IMAGE"); // This the code of array it depends how many frames you wanted to include on your frame
+
+ 
+ 
+ println(Serial.list());
+ // print a list of all available ports
+
+ port = new Serial(this,"COM3" , 9600);
+ // choose the port to which the Arduino is connected
+ 
+ 
+}
+void draw()
+{
+ if (0 < port.available()) { // this code in the void draw is for ultrasonic I give 5 codes and you have to add three in each code depens on how many you wanted on your frame
+
+ val = port.read();
+ }
+
+ if (val >= 0 && val <= 3) {
+ image(Handshake[0], 0, 0);
+ }
+  if (val >= 3 && val <= 6) {
+ image(Handshake[1], 0, 0);
+ }
+ if (val >= 6 && val <= 9) {
+ image(Handshake[2], 0, 0);
+ }
+ if (val >= 9 && val <= 12) {
+ image(Handshake[3], 0, 0);
+ }
+ if (val >= 12 && val <= 15) {
+ image(Handshake[4], 0, 0);
+
+ }
+
+ 
+
+ println(val); // print the value
+}
